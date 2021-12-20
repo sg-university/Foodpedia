@@ -14,5 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::get('/choose', function () {
+    return view('choose');
+});
+
+Route::get('/recommendation/index', function () {
+    return view('recommendation.index');
+});
+
+Route::get('/recommendation/detail', function () {
+    return view('recommendation/detail');
+});
+
+Route::get('/find/index', function () {
+    return view('find.index');
+});
+
+Route::post('/find/result', function () {
+    return redirect('find.result');
 });
