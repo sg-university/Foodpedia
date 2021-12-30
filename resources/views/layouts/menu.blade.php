@@ -17,9 +17,10 @@
     <nav class="navbar navbar-light bg-warning">
         <div class="container">
             <a class="navbar-brand">Foodpedia</a>
-            <form class="form-inline">
-                <a class="btn my-2 my-sm-0 text-white mr-5" type="submit">Register</a>
-                <a class="btn  my-2 my-sm-0 text-white" type="submit">Login</a>
+            <form class="form-inline" action="/logout" method=post>
+                @csrf
+                <a class="btn my-2 my-sm-0 text-white mr-5" type="submit">Hi, {{ Auth::user()->name }}!</a>
+                    <button class="btn my-2 my-sm-0 text-white" type="submit">Logout</button>
             </form>
         </div>
     </nav>

@@ -37,6 +37,16 @@ class LoginController extends Controller
         return back();
     }
 
+    public function logout(){
+        auth()->logout();
+
+        request()->session()->invalidate();
+
+        request()->session()->regenerateToken();
+
+        return redirect('/login');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
