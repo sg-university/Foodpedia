@@ -13,9 +13,12 @@ class CreateIngredientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ingredients', function (Blueprint $table) {
+        Schema::create('ingredient', function (Blueprint $table) {
             $table->id();
-            $table->string('ingredient_name');
+            $table->text('name');
+            $table->text('calories');
+            $table->text('description');
+            $table->text('image');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateIngredientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingredients');
+        Schema::dropIfExists('ingredient');
     }
 }

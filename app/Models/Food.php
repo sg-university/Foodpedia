@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Food extends Model
 {
     use HasFactory;
+    protected $table = 'food';
+    protected $guarded = [];
 
-    protected $guarded = ['id'];
+    public function ingredients()
+    {
+        // food many-to-many [ingredient]
+        // food one-to-many food_ingredient many-to-one ingredient
+        return $this->belongsToMany(Ingredient::class, 'food_ingredient', 'food_id', 'ingredient_id');
+    }
 }

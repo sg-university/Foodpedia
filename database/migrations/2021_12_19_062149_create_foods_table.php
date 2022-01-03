@@ -13,17 +13,15 @@ class CreateFoodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('foods', function (Blueprint $table) {
+        Schema::create('food', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ingredient_id');
-            $table->string('food_name');
-            $table->string('food_image');
-            $table->integer('calories');
-            $table->integer('rating');
-            $table->string('time');
+            $table->text('name');
+            $table->text('calories');
+            $table->double('rating');
+            $table->double('duration');
             $table->text('description');
-            $table->text('how_to_make');
-            $table->foreign('ingredient_id')->references('id')->on('ingredients')->onDelete('cascade');
+            $table->text('procedure');
+            $table->text('image');
             $table->timestamps();
         });
     }
@@ -35,6 +33,6 @@ class CreateFoodsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foods');
+        Schema::dropIfExists('food');
     }
 }
