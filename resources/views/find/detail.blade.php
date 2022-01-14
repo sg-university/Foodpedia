@@ -13,28 +13,31 @@
         <div class="col-md-6 mycol mb-4">
             <img src="/image/welcome_photo.jpg" width="300px" height="300px"> </div>
         <div class="col-md-6 xcol">
-            <h3>Judul Makanan</h3>
+            <h3>{{ $food->name }}</h3>
             <br>
 
             <h5>Description</h5>
-            <p>asdadsadsadsadsadsdsaadsadsads
-                adsadsadsasd
+            <p>{{ $food->description }}
             </p>
 
             <h5 class="mt-4">Ingredient:</h5>
-            <p>Telor</p>
-            <p>Permen</p>
+            @foreach ($food->details as $ingredient)
+                <p>
+                    {{ $ingredient->ingredient_name }}
+                </p>
+            @endforeach
+     
 
             <h5>How to Make</h5>
-            <p>asdadsadsadsadsadsdsaadsadsads
-                adsadsadsasd
+            <p>
+                {{ $food->procedure }}
             </p>
 
             <div class="col-md-8 col-12 xcol">
                     <div class="form-group row mb-3">
                         <div class="col-md-3 col-form-label"></div>
                         <div class="col-md-8">
-                            <a class="btn btn-warning btn-primary mt-4 mb-5" style="background-color : 	rgb(255, 167, 2);" href="/recommendation/index"type="submit">Back</a>
+                            <a class="btn btn-warning btn-primary mt-4 mb-5" style="background-color : 	rgb(255, 167, 2);" href="/find"type="submit">Back</a>
                             </div>
                     </div>
             </div>

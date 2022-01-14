@@ -15,11 +15,10 @@ class CreateFoodsIngredientsTable extends Migration
     {
         Schema::create('food_ingredient', function (Blueprint $table) {
             $table->id();
-            $table->text('food_id');
-            $table->text('ingredient_id');
-            $table->double('quantity');
-            $table->foreign('food_id', 'fk_food_ingredient_ref_food_on_food_id')->references('id')->on('food');
-            $table->foreign('ingredient_id', 'fk_food_ingredient_ref_ingredient_on_ingredient_id')->references('id')->on('ingredient');
+            $table->unsignedBigInteger('food_id');
+            $table->unsignedBigInteger('ingredient_id');
+            $table->foreign('food_id')->references('id')->on('food')->onDelete('cascade');
+            $table->foreign('ingredient_id')->references('id')->on('ingredient')->onDelete('cascade');
             $table->timestamps();
         });
     }

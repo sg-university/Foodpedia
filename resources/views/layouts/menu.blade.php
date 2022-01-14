@@ -16,7 +16,11 @@
 <body style="background:#f5e3c5 !important; ">
     <nav class="navbar navbar-light bg-warning">
         <div class="container">
-            <a class="navbar-brand">Foodpedia</a>
+            @if (Auth::user()->role == "Admin")
+                <a class="navbar-brand" href="/chooseAdmin">Foodpedia</a>
+            @else
+            <a class="navbar-brand" href="/home">Foodpedia</a>
+            @endif
             <form class="form-inline" action="/logout" method=post>
                 @csrf
                 <a class="btn my-2 my-sm-0 text-white mr-5" type="submit">Hi, {{ Auth::user()->name }}!</a>
