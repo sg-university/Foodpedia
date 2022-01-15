@@ -10,11 +10,8 @@ use Illuminate\Support\Facades\DB;
 
 class FindController extends Controller
 {
-    //
     public function search(Request $request)
     {
-
-
         // $request->all();
         // dd("asd");
         // dd($request->field_name);
