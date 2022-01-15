@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
                 'name' => $faker->name,
                 'calories' => $faker->numberBetween(100, 1000),
                 'description' => $faker->text,
-                'image' => $faker->imageUrl(640, 480, 'food'),
+                'image' => 'https://picsum.photos/640/480',
                 'rating' => $faker->numberBetween(1, 5),
                 'duration' => $faker->numberBetween(1, 10),
                 'procedure' => $faker->text,
@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'Member',
             'name' => 'Member'
         ]);
-        
+
 
         Ingredient::create([
             'id' => 1,
@@ -100,6 +100,5 @@ class DatabaseSeeder extends Seeder
             'food_id' => 3,
             'ingredient_id' => 1,
         ]);
-
     }
 }

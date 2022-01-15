@@ -11,7 +11,7 @@ class Food extends Model
     protected $table = 'food';
     protected $guarded = [];
 
-    public function details()
+    public function ingredients()
     {
         // food many-to-many [ingredient]
         // food one-to-many food_ingredient many-to-one ingredient

@@ -68,4 +68,3 @@ Route::post('/deleteIngredient/{ingredient}', [IngredientController::class, 'des
 
 
 // Route::post('/find/result', [FindController::class, 'search']);
-

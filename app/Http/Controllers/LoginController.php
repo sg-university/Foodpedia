@@ -24,14 +24,14 @@ class LoginController extends Controller
         // dd($request);
 
         $credentials = $request->validate([
-            'email' => 'required',
+            'email' => 'required:email',
             'password' => 'required',
         ]);
 
-        if(Auth::attempt($credentials)){
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            if(Auth::user()->role == "Admin")  return redirect()->intended('/chooseAdmin');
+            if (Auth::user()->role == "Admin")  return redirect()->intended('/chooseAdmin');
 
             return redirect()->intended('/home');
         }
@@ -39,7 +39,8 @@ class LoginController extends Controller
         return back();
     }
 
-    public function logout(){
+    public function logout()
+    {
         auth()->logout();
 
         request()->session()->invalidate();

@@ -9,23 +9,26 @@ use Illuminate\Http\Request;
 class FoodController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         $foods = Food::all();
 
-        if(request('search')){
+        if (request('search')) {
             $foods = Food::where('name', 'LIKE', '%' . request('search') . '%')->get();
         }
 
         return view('food.index', compact('foods'));
     }
 
-    public function create(){
+    public function create()
+    {
         $ingredients = Ingredient::all();
 
         return view('food.create', compact('ingredients'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         // dd($request->all());
 
         // Food::create([
@@ -37,7 +40,7 @@ class FoodController extends Controller
         $imgName = date("Ymd_His") . '.' . $request->image->extension();
 
         $request->image->move(public_path('file_buktiterima'), $imgName);
-          
+
         $food = new Food();
         $food->name = $request->name;
         $food->description = $request->description;
@@ -49,13 +52,14 @@ class FoodController extends Controller
 
         $food->save();
 
-        $food->details()->attach($request->field_name);
+        $food->ingredients()->attach($request->field_name);
 
-        
+
         return redirect('/food');
     }
 
-    public function destroy(Food $food){
+    public function destroy(Food $food)
+    {
         Food::where('id', $food->id)->delete();
 
         return back();

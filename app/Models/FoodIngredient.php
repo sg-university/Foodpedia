@@ -3,27 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class FoodIngredient extends Model
+class FoodIngredient extends Pivot
 {
     use HasFactory;
 
     protected $table = 'food_ingredient';
+    protected $guarded = [];
+    public $incrementing = true;
 
-    protected $guarded = ['id'];
-
-    public function ingredients()
+    public function food()
     {
-        // [ingredient] many-to-many food
-        // food one-to-many food_ingredient many-to-one ingredient
-        return $this->hasMany(Ingredient::class, 'food_ingredient', 'ingredient_id', 'id');
+        // [food_ingredient] many-to-one food
+        return $this->belongsTo(Keyboard::class, 'food_id');
     }
 
-    public function foods()
+    public function ingredient()
     {
-        // [ingredient] many-to-many food
-        // food one-to-many food_ingredient many-to-one ingredient
-        return $this->hasMany(Food::class, 'food_ingredient', 'food_id', 'id');
+        // [food_ingredient] many-to-one ingredient
+        return $this->belongsTo(Ingredient::class, 'ingredient_id');
     }
 }
