@@ -21,6 +21,10 @@
                 <p>{{ $food->description }}
                 </p>
 
+                <h5>Rating</h5>
+                <p>{{ $food->rating }}
+                </p>
+
                 <h5 class="mt-4">Ingredient:</h5>
                 @foreach ($food->ingredients as $ingredient)
                     <p>

@@ -20,6 +20,12 @@ class FoodController extends Controller
         return view('food.index', compact('foods'));
     }
 
+    public function show(Food $food)
+    {
+        // dd($food);
+        return view("food.detail", compact('food'));
+    }
+
     public function create()
     {
         $ingredients = Ingredient::all();

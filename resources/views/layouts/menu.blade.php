@@ -9,28 +9,36 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>FoodPedia</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <link href="css/app.css" rel="stylesheet" type="text/css">
 </head>
 
 <body style="background:#f5e3c5 !important; ">
     <nav class="navbar navbar-light bg-warning">
         <div class="container">
-            @if (Auth::user()->role == "Admin")
+            @if (Auth::user()->role == 'Admin')
                 <a class="navbar-brand" href="/chooseAdmin">Foodpedia</a>
             @else
-            <a class="navbar-brand" href="/home">Foodpedia</a>
+                <a class="navbar-brand" href="/home">Foodpedia</a>
             @endif
-            <form class="form-inline" action="/logout" method=post>
-                @csrf
-                <a class="btn my-2 my-sm-0 text-white mr-5" type="submit">Hi, {{ Auth::user()->name }}!</a>
-                    <button class="btn my-2 my-sm-0 text-white" type="submit">Logout</button>
-            </form>
+            <a href="/food">
+                <button class="btn my-2 my-sm-0 text-white" type="submit">Food</button>
+            </a>
+            <a href="/ingredient">
+                <button class="btn my-2 my-sm-0 text-white" type="submit">Ingredient</button>
+            </a>
+            <a href="/recommendation">
+                <button class="btn my-2 my-sm-0 text-white" type="submit">Recommendation</button>
+            </a>
+            <a class="btn my-2 my-sm-0 text-white mr-5" type="submit">Hi, {{ Auth::user()->name }}!</a>
+            <a href="/logout">
+                <button class="btn my-2 my-sm-0 text-white" type="submit">Logout</button>
+            </a>
         </div>
     </nav>
 
     @yield('page-content')
-    
+
 
 
 

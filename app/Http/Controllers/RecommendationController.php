@@ -8,15 +8,17 @@ use Illuminate\Http\Request;
 class RecommendationController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         $foods = Food::orderByDesc('rating')->take(5)->get();
 
         // dd($foods);
 
-        return view("recommendation/index", compact('foods'));
+        return view("recommendation.index", compact('foods'));
     }
 
-    public function show(Food $food){
+    public function show(Food $food)
+    {
 
         // dd($food);
 

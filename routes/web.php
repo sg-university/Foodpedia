@@ -47,13 +47,14 @@ Route::post('/login', [LoginController::class, 'authenticate'])->middleware('gue
 
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/recommendation/index', [RecommendationController::class, 'index']);
+Route::get('/recommendation', [RecommendationController::class, 'index']);
 Route::get('/recommendation/detail/{food}', [RecommendationController::class, 'show']);
 
 Route::get('/find', [FindController::class, 'search']);
 Route::get('/find/detail/{food}', [FindController::class, 'show']);
 
 Route::get('/food', [FoodController::class, 'index']);
+Route::get('/food/detail/{food}', [FoodController::class, 'show']);
 Route::get('/createFood', [FoodController::class, 'create']);
 Route::post('/createFood', [FoodController::class, 'store']);
 Route::post('/deleteFood/{food}', [FoodController::class, 'destroy']);

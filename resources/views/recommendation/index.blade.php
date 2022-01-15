@@ -27,13 +27,12 @@
 
     <div class="row align-items-center justify-content-center mt-5 ">
         <div style="width: 35%;" class="text-center ">
-            <h1 class="mb-5">Recipe Recommendation</h1>
+            <h1 class="mb-5">Recipe Recommendation By Rating</h1>
         </div>
     </div>
 
     <div class="container mt-5">
         @foreach ($foods as $food)
-
             <a href="/recommendation/detail/{{ $food->id }}" class="anchor">
                 <div class="row align-items-center p-3 mb-5 z">
                     <div class="col-3">
