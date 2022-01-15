@@ -37,15 +37,9 @@ class FoodController extends Controller
     {
         // dd($request->all());
 
-        // Food::create([
-        //     'name' => $request->name,
-        //     ''
-
-        // ]);
-
-        $imgName = date("Ymd_His") . '.' . $request->image->extension();
-
-        $request->image->move(public_path('file_buktiterima'), $imgName);
+        $destinationPath = 'images/';
+        $fileName = date("Ymd_His") . '.' . $request->image->extension();
+        $request->image->move($destinationPath, $fileName);
 
         $food = new Food();
         $food->name = $request->name;
@@ -54,7 +48,7 @@ class FoodController extends Controller
         $food->rating = $request->rating;
         $food->duration = $request->duration;
         $food->procedure = $request->procedure;
-        $food->image = $imgName;
+        $food->image = "/" . $destinationPath . $fileName;
 
         $food->save();
 

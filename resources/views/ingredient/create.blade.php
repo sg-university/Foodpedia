@@ -15,9 +15,9 @@
                                     @csrf
 
                                     <div class="form-outline form-white mb-4 mt-5">
+                                        <label class="form-label" for="typeEmailX">Name</label>
                                         <input type="text" id="typeEmailX" name="ingredient_name"
                                             class="form-control form-control-lg" />
-                                        <label class="form-label" for="typeEmailX">Name</label>
                                     </div>
 
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit">Add</button>

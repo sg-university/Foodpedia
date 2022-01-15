@@ -37,7 +37,7 @@
                 <form action="/food" method="get" class="d-flex">
                     @csrf
                     <input class="form-control" name="search" type="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-success" type="submit">Search</button>
+                    <button class="mx-2 btn btn-success" type="submit">Search</button>
                 </form>
 
                 @if (Auth::user()->role == 'Admin')
