@@ -15,10 +15,7 @@ class CreateIngredientsTable extends Migration
     {
         Schema::create('ingredient', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
-            $table->text('calories');
-            $table->text('description');
-            $table->text('image');
+            $table->text('ingredient_name');
             $table->timestamps();
         });
     }

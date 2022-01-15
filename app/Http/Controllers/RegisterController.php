@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -48,7 +49,12 @@ class RegisterController extends Controller
         $validatedData['password'] = Hash::make($validatedData['password']);
 
 
-        User::create($validatedData);
+        User::create([
+            'email' => $request->email,
+            'name' => $request->name,
+            'password' => $validatedData['password'],
+            'role' => "Member",
+        ]);
 
         $request->session()->flash('success', 'Registration Success!');
 

@@ -11,23 +11,24 @@
 <div class="container d-flex justify-content-center my-5 border p-5" style="background-color : 	rgb(248, 191, 85);">
     <div class="row my-2 mx-2 main">
         <div class="col-md-6 mycol mb-4">
-            <img src="/image/welcome_photo.jpg" width="300px" height="300px"> </div>
+            <img src="{{ $food->image }}" width="300px" height="300px"> </div>
         <div class="col-md-6 xcol">
-            <h3>Judul Makanan</h3>
+            <h3>{{ $food->name }}</h3>
             <br>
 
             <h5>Description</h5>
-            <p>asdadsadsadsadsadsdsaadsadsads
-                adsadsadsasd
+            <p>{{$food->description}}
             </p>
 
             <h5 class="mt-4">Ingredient:</h5>
-            <p>Telor</p>
-            <p>Permen</p>
+            @foreach ($food->details as $ingredient)
+            <p>
+                {{ $ingredient->ingredient_name }}
+            </p>
+            @endforeach
 
             <h5>How to Make</h5>
-            <p>asdadsadsadsadsadsdsaadsadsads
-                adsadsadsasd
+            <p>{{ $food->procedure }}
             </p>
 
             <div class="col-md-8 col-12 xcol">

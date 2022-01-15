@@ -34,84 +34,51 @@
 </div>
 
 
-<form action="/find/result" method="post">
+<form action="/find" method="get">
+    @csrf
     <div class="row align-items-center justify-content-center mt-5">
         <div style="width: 35%;" class="text-center rounded">
             <div class="field_wrapper">
                 <div>
-                    <input type="text" name="field_name[]" value="" />
-                    <a href="javascript:void(0);" class="add_button" title="Add field">Add</a>
-
+                    <input required type="text" name="field_name[]" value="" />
+                    <a href="javascript:void(0);" class="add_button btn btn-success" title="Add field">Add</a>
                     <br>
                 </div>
             </div>
         </div>
     </div>
     <div class="row align-items-center justify-content-center mt-5">
-        <button type="submit">asdasdadsads</button>
+        <button class="btn btn-primary" type="submit">Find Now!</button>
     </div>
 </form>
 
 
 <div class="container mt-5">
 
-    <a href="/recommendation/detail" class="anchor">
+    @foreach ($foods as $food)
+        
+    <a href="/find/detail/{{ $food->id }}" class="anchor">
         <div class="row align-items-center p-3 mb-5 z">
             <div class="col-3">
-                <img src="/image/welcome_photo.jpg" alt="">
+                <img src="{{ $food->image }}" alt="">
             </div>
             <div class="col-3">
-                <h5>Honey Chicken</h5>
+                <h5>{{ $food->name }}</h5>
                 <br>
-                <h5>Rating: 4.5</h5>
+                <h5>Rating : {{ $food->rating }}</h5>
             </div>
             <div class="col-3">
-                <h5>Calories 123</h5>
+                <h5>Calories : {{ $food->calories}}</h5>
             </div>
             <div class="col-3">
-                <h5>Estimated Times: 30 Mins</h5>
+                <h5>Estimated Times: {{ $food->duration }} Mins</h5>
             </div>
         </div>
     </a>
 
-    <a href="" class="anchor">
-        <div class="row align-items-center  p-3 mb-5 z">
-            <div class="col-3">
-                <img src="/image/welcome_photo.jpg" alt="">
-            </div>
-            <div class="col-3">
-                <h5>Honey Chicken</h5>
-                <br>
-                <h5>Rating: 4.5</h5>
-            </div>
-            <div class="col-3">
-                <h5>Calories 123</h5>
-            </div>
-            <div class="col-3">
-                <h5>Estimated Times: 30 Mins</h5>
-            </div>
-        </div>
-    </a>
+    @endforeach
 
-    <a href="" class="anchor">
-        <div class="row align-items-center  p-3 mb-5 z">
-            <div class="col-3">
-                <img src="/image/welcome_photo.jpg" alt="">
-            </div>
-            <div class="col-3">
-                <h5>Honey Chicken</h5>
-                <br>
-                <h5>Rating: 4.5</h5>
-            </div>
-            <div class="col-3">
-                <h5>Calories 123</h5>
-            </div>
-            <div class="col-3">
-                <h5>Estimated Times: 30 Mins</h5>
-            </div>
-        </div>
-    </a>
-</div>
+
 
 
 <script type="text/javascript">
@@ -120,7 +87,7 @@
         var addButton = $('.add_button');
         var wrapper = $('.field_wrapper');
         var fieldHTML =
-            '<div><input type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button">Delete</a></div>';
+            '<div><input required type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button btn btn-danger">Delete</a></div>';
         var x = 1;
 
         $(addButton).click(function () {

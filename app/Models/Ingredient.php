@@ -11,10 +11,10 @@ class Ingredient extends Model
     protected $table = 'ingredient';
     protected $guarded = [];
 
-    public function ingredients()
+    public function details()
     {
         // [ingredient] many-to-many food
         // food one-to-many food_ingredient many-to-one ingredient
-        return $this->belongsToMany(Food::class, 'food_ingredient', 'ingredient_id', 'food_id');
+        return $this->belongsToMany(Food::class);
     }
 }
