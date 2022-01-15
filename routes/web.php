@@ -45,7 +45,7 @@ Route::post('/register', [RegisterController::class, 'store'])->middleware('gues
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/recommendation', [RecommendationController::class, 'index']);
 Route::get('/recommendation/detail/{food}', [RecommendationController::class, 'show']);
