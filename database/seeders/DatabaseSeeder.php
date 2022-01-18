@@ -25,14 +25,14 @@ class DatabaseSeeder extends Seeder
         $ingredientData = ['Saus', 'Cabai', 'Tomat', 'Kacang', 'Susu', 'Telur', 'Garam', 'Gula', 'Tepung', 'Maizena', 'Minyak', 'Daging Ayam', 'Ikan', 'Lengkuas', 'Bawang Merah', 'Bawang Putih', 'Bawang Bombay', 'Margarin', 'Kecap'];
 
         $ingredientDataCount = count($ingredientData);
-        for ($i = 0; $i < $ingredientDataCount; $i++) {
+        for ($i = 100; $i < 100 + $ingredientDataCount; $i++) {
             Ingredient::create([
                 'id' => $i + 1,
-                'ingredient_name' => $ingredientData[$i],
+                'ingredient_name' => $ingredientData[$i - 100],
             ]);
         }
 
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 101; $i <= 120; $i++) {
             Food::create([
                 'id' => $i,
                 'name' => $faker->name,
@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
 
 
         for ($i = 0; $i < 20 * 4; $i++) {
-            $x = ($i % 20) + 1;
+            $x = ($i % 20) + 101;
             Food::find($x)->ingredients()->attach(Ingredient::all()->random($faker->unique(true)->numberBetween(1, $ingredientDataCount))->first());
         }
 
