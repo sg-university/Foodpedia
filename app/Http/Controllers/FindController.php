@@ -14,17 +14,17 @@ class FindController extends Controller
     {
         // dd($request->field_name);
         if ($request->field_name == NULL) {
-            $foods = Food::where('id', 0);
+            $foods = Food::where('id', 0)->get();
         } else if ($request->all()) {
 
             $foods = Food::with('ingredients');
             foreach ($request->field_name as $name) {
-                $foods = $foods->whereRelation('ingredients', 'ingredient_name', 'like', $name);
+                $foods = $foods->whereRelation('ingredients', 'ingredient_name', 'like', '%' . $name . '%');
             }
 
             $foods = $foods->get();
         } else {
-            $foods = Food::where('id', 0);
+            $foods = Food::where('id', 0)->get();
         }
 
         // dd($foodIngredients);

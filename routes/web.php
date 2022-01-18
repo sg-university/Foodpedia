@@ -27,44 +27,44 @@ Route::get('/welcome', function () {
 
 Route::get('/', [LoginController::class, 'index'])->middleware('guest');
 
-Route::get('/home', function () {
+Route::get('/home',  function () {
     return view('home');
-});
+})->middleware('auth');
 
 Route::get('/choose', function () {
-    return view('choose');
-});
+    return view('recommendation.choose');
+})->middleware('auth');
 
 Route::get('/chooseAdmin', function () {
     return view('admin.choose');
-});
+})->middleware('auth');
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 
 Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::get('/recommendation', [RecommendationController::class, 'index']);
-Route::get('/recommendation/detail/{food}', [RecommendationController::class, 'show']);
+Route::get('/recommendation', [RecommendationController::class, 'index'])->middleware('auth');
+Route::get('/recommendation/detail/{food}', [RecommendationController::class, 'show'])->middleware('auth');
 
-Route::get('/find', [FindController::class, 'search']);
-Route::get('/find/detail/{food}', [FindController::class, 'show']);
+Route::get('/find', [FindController::class, 'search'])->middleware('auth');
+Route::get('/find/detail/{food}', [FindController::class, 'show'])->middleware('auth');
 
-Route::get('/food', [FoodController::class, 'index']);
-Route::get('/food/detail/{food}', [FoodController::class, 'show']);
-Route::get('/createFood', [FoodController::class, 'create']);
-Route::post('/createFood', [FoodController::class, 'store']);
-Route::post('/deleteFood/{food}', [FoodController::class, 'destroy']);
+Route::get('/food', [FoodController::class, 'index'])->middleware('auth');
+Route::get('/food/detail/{food}', [FoodController::class, 'show'])->middleware('auth');
+Route::get('/createFood', [FoodController::class, 'create'])->middleware('auth');
+Route::post('/createFood', [FoodController::class, 'store'])->middleware('auth');
+Route::post('/deleteFood/{food}', [FoodController::class, 'destroy'])->middleware('auth');
 
 
 
-Route::get('/ingredient', [IngredientController::class, 'index']);
-Route::get('/createIngredient', [IngredientController::class, 'create']);
-Route::post('/createIngredient', [IngredientController::class, 'store']);
-Route::post('/deleteIngredient/{ingredient}', [IngredientController::class, 'destroy']);
+Route::get('/ingredient', [IngredientController::class, 'index'])->middleware('auth');
+Route::get('/createIngredient', [IngredientController::class, 'create'])->middleware('auth');
+Route::post('/createIngredient', [IngredientController::class, 'store'])->middleware('auth');
+Route::post('/deleteIngredient/{ingredient}', [IngredientController::class, 'destroy'])->middleware('auth');
 
 
 

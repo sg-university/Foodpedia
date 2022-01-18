@@ -52,7 +52,7 @@
                                     </div>
 
                                     <div class="form-outline form-white mb-4">
-                                        <label class="form-label" for="name">Duration</label>
+                                        <label class="form-label" for="name">Duration (Minutes)</label>
                                         <input type="number" name="duration" class="form-control form-control-lg" />
                                     </div>
 

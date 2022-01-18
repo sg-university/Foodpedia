@@ -27,7 +27,7 @@
             <a href="/ingredient">
                 <button class="btn my-2 my-sm-0 text-white" type="submit">Ingredient</button>
             </a>
-            <a href="/recommendation">
+            <a href="/choose">
                 <button class="btn my-2 my-sm-0 text-white" type="submit">Recommendation</button>
             </a>
             <a class="btn my-2 my-sm-0 text-white mr-5" type="submit">Hi, {{ Auth::user()->name }}!</a>

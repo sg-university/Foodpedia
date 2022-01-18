@@ -22,6 +22,10 @@
                     <p>{{ $food->description }}
                     </p>
 
+                    <h5>Duration</h5>
+                    <p>{{ $food->duration }} minutes
+                    </p>
+
                     <h5>Rating</h5>
                     <p>{{ $food->rating }}
                     </p>
